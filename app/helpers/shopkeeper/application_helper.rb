@@ -1,0 +1,2 @@
+module Shopkeeper::ApplicationHelper
+end
