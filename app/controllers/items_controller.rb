@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   def index
+    @items = Item.all
   end
 
   def show
@@ -17,7 +18,8 @@ class ItemsController < ApplicationController
       flash[:notice] = "Item has been created."
       redirect_to @item
     else
-      #nothing, yet
+      flash.now[:alert] = "Item has not been created."
+      render "new"
     end
   end
 

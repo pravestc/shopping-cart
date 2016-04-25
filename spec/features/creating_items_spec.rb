@@ -1,11 +1,13 @@
 require "rails_helper"
 
 RSpec.feature "Users can create new projects" do
-  scenario "with valid attributes" do
+  before do
     visit "/"
     
     click_link "New Item"
-
+  end
+  
+  scenario "with valid attributes" do
     fill_in "Name", with: "Radiance"
     fill_in "Legend", with: "A divine weapon that causes damage and a bright burning effect that lays waste to nearby enemies."
     fill_in "Effect", with: "Active: Toggle Burn - When active, scorches nearby enemies for 50 damage per second and blinds them, causing them to miss 17% of their attacks."
@@ -16,5 +18,12 @@ RSpec.feature "Users can create new projects" do
     click_button "Create Item"
 
     expect(page).to have_content "Item has been created."
+  end
+
+  scenario "when providing invalid attributes" do
+    click_button "Create Item"
+
+    expect(page).to have_content "Item has not been created."
+    expect(page).to have_content "Name can't be blank"
   end
 end
