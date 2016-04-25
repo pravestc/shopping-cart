@@ -8,6 +8,26 @@
 </head>
 <body>
 
+
+<ul>
+  <li class="<%= "active" if current_page?("/") %>">
+    <%= link_to "Home", root_path %>
+  </li>
+  <% unless user_signed_in? %>
+    <li class="<%= "active" if current_page?("/users/sign_up") %>">
+      <%= link_to "Sign up", new_user_registration_path %>
+    </li>
+    <li class="<%= "active" if current_page?("/users/sign_in") %>">
+      <%= link_to "Sign in", new_user_session_path %>
+    </li>
+  <% end %>
+  <% if user_signed_in? %>
+    <p>
+      Signed in as <%= current_user.email %>
+    </p>
+  <% end %>  
+</ul>
+
 <% flash.each do |key, message| %>
   <div><%= message %></div>
 <% end %>

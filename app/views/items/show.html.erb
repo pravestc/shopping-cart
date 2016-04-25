@@ -1,8 +1,10 @@
 <h1>Item <%= @item.name %></h1>
+  <%= link_to "Delete Item", [@item], method: :delete,
+    data: { confirm: "Are you sure you want to delete this item?" } %>
 <p>
-  <%= @item.legend %><br>
-  <%= @item.effect %><br>
-  <%= @item.stats %><br>
+  Legend: <%= @item.legend %><br><br>
+  Effect: <%= @item.effect %><br><br>
+  Stats: <%= @item.stats %><br><br>
 </p>
-  
+
 

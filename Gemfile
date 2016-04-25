@@ -55,3 +55,5 @@ group :test do
 end
 
 gem "rspec-rails", "~> 3.4.2"
+
+gem "devise", "~> 3.4.1"
