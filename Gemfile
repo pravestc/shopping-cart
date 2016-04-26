@@ -57,3 +57,5 @@ end
 gem "rspec-rails", "~> 3.4.2"
 
 gem "devise", "~> 3.4.1"
+
+gem "bootstrap-sass", "~> 3.3"

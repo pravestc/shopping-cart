@@ -6,5 +6,12 @@
   Effect: <%= @item.effect %><br><br>
   Stats: <%= @item.stats %><br><br>
 </p>
-
+<ul class="actions">
+  <li>
+    <%= link_to "Add item to cart", add_to_cart_item_path, remote: true, class: "btn btn-primary" %>
+  </li>
+  <li>
+    <%= link_to "Go to cart", cart_path %>
+  </li>
+</ul>
 

@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update]
+  before_action :set_item, only: [:show]
+  before_action :set_cart
 
   def index
     @items = Item.all
@@ -33,6 +34,15 @@ class ItemsController < ApplicationController
     redirect_to items_path
   end
 
+  def add_to_cart
+    @item = Item.find(params[:id])
+    @cart.items << @item
+    flash[:notice] = @item.name + " has been added to cart."
+
+    redirect_to @item
+  end
+
+
   private
 
   def item_params
@@ -46,6 +56,12 @@ class ItemsController < ApplicationController
 
     redirect_to items_path
   end
-
-
+  
+  def set_cart 
+    if Cart.exists?(user_id: session[:current_user_id])
+      @cart = Cart.find_by(user_id: session[:current_user_id])
+    else
+      @cart = Cart.create(user_id: session[:current_user_id])
+    end
+  end
 end
