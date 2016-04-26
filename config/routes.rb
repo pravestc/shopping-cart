@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :new, :create, :show, :destroy] do
     member do 
       get :add_to_cart
+      get :remove_from_cart
     end
   end
   resources :carts, only: [:index, :show]

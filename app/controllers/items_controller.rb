@@ -42,6 +42,13 @@ class ItemsController < ApplicationController
     redirect_to @item
   end
 
+  def remove_from_cart
+    @item = Item.find(params[:id])
+    @cart.items.delete(@item)
+    flash[:notice] = @item.name + " has been removed from cart."
+
+    redirect_to @item
+  end
 
   private
 

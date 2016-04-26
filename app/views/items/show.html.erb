@@ -11,6 +11,9 @@
     <%= link_to "Add item to cart", add_to_cart_item_path, remote: true, class: "btn btn-primary" %>
   </li>
   <li>
+    <%= link_to "Remove item from cart", remove_from_cart_item_path, remote: true, class: "btn btn-danger" %>
+  </li>
+  <li>
     <%= link_to "Go to cart", cart_path %>
   </li>
 </ul>
