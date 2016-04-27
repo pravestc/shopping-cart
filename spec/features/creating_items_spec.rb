@@ -16,7 +16,8 @@ RSpec.feature "Users can create new projects" do
     BURN DAMAGE PER SECOND: 50
     BURN MISS CHANCE: 17%
     BURN RADIUS: 700"
-    fill_in "Price", with: "3000"
+    fill_in "Price", with: "300"
+
     click_button "Create Item"
 
     expect(page).to have_content "Item has been created."

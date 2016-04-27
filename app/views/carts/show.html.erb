@@ -1,7 +1,20 @@
 <h1>This is your cart</h1>
+<h2>Total price: <%= number_to_currency(@cart.totalprice_dollars) %>
 
+<h2>List of items inside Cart</h2>
+<br>
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Quantity</th>
+  </tr>
 <% @cart.items.each do |item| %>
-  <li><%= item.name %></li>
+  <tr>
+    <th><%= link_to item.name, item %></th>
+    <th><%= number_to_currency(item.price_dollars) %></th>
+    <th><%= @cart.manifests(true).where(item_id: item.id).first.quantity %></th>
+  </tr>
 <% end %>
 
 <%= link_to "Place Order", place_order_cart_path, class: "btn btn-primary" %>

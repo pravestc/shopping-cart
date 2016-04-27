@@ -26,7 +26,7 @@ class CartsController < ApplicationController
         @cart.order = true
         @cart.save
         
-        @cart = Cart.create
+        @cart = Cart.create(totalprice: 0)
         session[:cart_id] = @cart.id
         
         flash[:notice] = "Order has been placed. Your cart has been emptied so you can place another order"

@@ -1,9 +1,20 @@
 <h1>These are all your orders that have been placed</h1>
 
 <% @carts.each do |cart| %>
-  <p><%= cart.id %> - <%= cart.order %>
-      <% cart.items.each do |item| %>
-        <li><%= item.name %></li>
-      <% end %>
-  </p>
+  <h3>Ordered in: <%= cart.updated_at %></h3>
+  <h3>Total Price: <%= number_to_currency(cart.totalprice_dollars) %></h3>
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+    </tr>
+    <% cart.items.each do |item| %>
+      <tr>
+        <td><%= link_to item.name, item %></td>
+        <td><%= number_to_currency(item.price_dollars) %></td>
+        <td><%= cart.manifests.where(item_id: item.id).first.quantity %></td>
+      </tr>
+    <% end %>
+  </table>
 <% end %>

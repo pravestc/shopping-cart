@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "Users can place orders" do
   let(:user) { FactoryGirl.create(:user) }
-  let(:item) { FactoryGirl.create(:item, name: "Radiance") }
+  let(:item) { FactoryGirl.create(:item, name: "Radiance", price: "300") }
   
   scenario "when logged in" do
     visit item_path(item)

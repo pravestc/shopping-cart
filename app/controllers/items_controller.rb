@@ -17,8 +17,9 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-
     if @item.save
+      pr = @item.price * 100
+      @item.update(price: pr)
       flash[:notice] = "Item has been created."
       redirect_to @item
     else
@@ -37,6 +38,7 @@ class ItemsController < ApplicationController
 
   def add_to_cart 
     @cart = Cart.find_by(user_id: session[:current_user_id])
+    tprice = @cart.totalprice
     @item = Item.find(params[:id])
     unless @cart.items.exists?(id: @item.id)
       @cart.items << @item
@@ -47,6 +49,8 @@ class ItemsController < ApplicationController
       @cart.manifests.where(item_id: @item.id).first.update(quantity: q1)
       @cart.manifests(true)
     end 
+    tprice = tprice + @item.price
+    @cart.update(totalprice: tprice)
     flash[:notice] = @item.name + " has been added to cart."
 
     redirect_to @item
@@ -54,6 +58,7 @@ class ItemsController < ApplicationController
 
   def remove_from_cart 
     @cart = Cart.find_by(user_id: session[:current_user_id])
+    tprice = @cart.totalprice
     @item = Item.find(params[:id])
     unless @cart.items.exists?(id: @item.id)
       flash[:notice] = @item.name + "is not in cart"
@@ -63,9 +68,11 @@ class ItemsController < ApplicationController
         @cart.items.delete(@item)
       else
         q1 = q1 - 1
-        @cart.manifests.where(item_id: @item_id).first.update(quantity: q1)
+        @cart.manifests.where(item_id: @item.id).first.update(quantity: q1)
         @cart.manifests(true)
       end
+      tprice = tprice - @item.price
+      @cart.update(totalprice: tprice)
     end
     flash[:notice] = @item.name + " has been removed from cart."
 
@@ -91,6 +98,7 @@ class ItemsController < ApplicationController
       @cart = Cart.find_by(id: session[:cart_id])
     else
       @cart = Cart.new
+      @cart.totalprice = 0
       @cart.save
       session[:cart_id] = @cart.id 
     end
