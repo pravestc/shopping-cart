@@ -19,14 +19,19 @@ class CartsController < ApplicationController
       redirect_to @cart
     else
       @cart.user = current_user
-      @cart.order = true
-      @cart.save
+      if @cart.items.empty?
+        flash[:notice] = "Order has not been placed. Cart is empty. Please select one or more items before placing your order" 
+        redirect_to items_path
+      else
+        @cart.order = true
+        @cart.save
         
-      @cart = Cart.create
-      session[:cart_id] = @cart.id
-    
-      flash[:notice] = "Order has been placed. Your cart has been emptied so you can place another order"
-      redirect_to carts_path 
+        @cart = Cart.create
+        session[:cart_id] = @cart.id
+        
+        flash[:notice] = "Order has been placed. Your cart has been emptied so you can place another order"
+        redirect_to carts_path 
+      end
     end
   end
 
