@@ -13,13 +13,13 @@ unless Item.exists?(name: "Ring of Basilius")
             Multiple instances of Basilius Aura do not stack.", stats: "+ 6 Damage
 + 1 Armor
 AURA MANA REGEN: 0.65
-AURA BONUS ARMOR: 2 ")
+AURA BONUS ARMOR: 2 ", price: 50000)
 end
 
 unless Item.exists?(name: "Flying Courier")
   Item.create!(name: "Flying Courier", legend: "", effect: "Upgrades your team's Animal Courier to a Flying Courier, granting it swift, unobstructed movement to carry items to and from your team's base.
 
-            Requires a deployed Animal Courier. ", stats: "")
+            Requires a deployed Animal Courier. ", stats: "", price: 15000)
 end
 
 unless User.exists?(email: "shopkeeper@shopping-cart.com")

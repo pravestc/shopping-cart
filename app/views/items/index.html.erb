@@ -15,10 +15,12 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Price</th>
   </tr>
   <% @items.each do |f| %>
     <tr>
       <td><%= link_to f.name, f %></td>
+      <td><%= number_to_currency(f.price_dollars) %></td>
     </tr>
   <% end %>
 </table> 

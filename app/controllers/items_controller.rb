@@ -38,7 +38,15 @@ class ItemsController < ApplicationController
   def add_to_cart 
     @cart = Cart.find_by(user_id: session[:current_user_id])
     @item = Item.find(params[:id])
-    @cart.items << @item
+    unless @cart.items.exists?(id: @item.id)
+      @cart.items << @item
+      @cart.manifests.where(item_id: @item.id).first.update(quantity: 1)
+      @cart.manifests(true)
+    else
+      q1 = 1 + @cart.manifests.where(item_id: @item.id).first.quantity
+      @cart.manifests.where(item_id: @item.id).first.update(quantity: q1)
+      @cart.manifests(true)
+    end 
     flash[:notice] = @item.name + " has been added to cart."
 
     redirect_to @item
@@ -47,7 +55,18 @@ class ItemsController < ApplicationController
   def remove_from_cart 
     @cart = Cart.find_by(user_id: session[:current_user_id])
     @item = Item.find(params[:id])
-    @cart.items.delete(@item)
+    unless @cart.items.exists?(id: @item.id)
+      flash[:notice] = @item.name + "is not in cart"
+    else
+      q1 = @cart.manifests.where(item_id: @item.id).first.quantity
+      if q1 == 1
+        @cart.items.delete(@item)
+      else
+        q1 = q1 - 1
+        @cart.manifests.where(item_id: @item_id).first.update(quantity: q1)
+        @cart.manifests(true)
+      end
+    end
     flash[:notice] = @item.name + " has been removed from cart."
 
     redirect_to @item
@@ -56,7 +75,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :legend, :effect, :stats)
+    params.require(:item).permit(:name, :legend, :effect, :stats, :price)
   end
 
   def set_item
