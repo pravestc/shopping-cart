@@ -1,2 +1,11 @@
 <h1>Shopkeeper's page</h1>
 <p>View orders placed</p>
+
+
+<% @carts.each do |cart| %>
+  <p><%= cart.id %> - <%= cart.order %>
+      <% cart.items.each do |item| %>
+        <li><%= item.name %></li>
+      <% end %>
+  </p>
+<% end %>

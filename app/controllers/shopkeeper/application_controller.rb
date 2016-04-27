@@ -2,6 +2,7 @@ class Shopkeeper::ApplicationController < ApplicationController
   before_action :authorize_shopkeeper!
 
   def index
+    @carts = Cart.where(order: true).all
   end
 
   private

@@ -4,7 +4,12 @@ class CartsController < ApplicationController
   end
 
   def index
-    @carts = Cart.all
+    unless user_signed_in?
+      flash[:notice] = "Can't access placed orders without login in. Please log in first"
+      redirect_to items_path 
+    else
+      @carts = Cart.where(user_id: current_user, order: true)
+    end
   end
 
   def place_order
@@ -13,7 +18,6 @@ class CartsController < ApplicationController
       flash[:notice] = "Order has not been placed. Please log in first"
       redirect_to @cart
     else
-
       @cart.user = current_user
       @cart.order = true
       @cart.save
@@ -22,7 +26,7 @@ class CartsController < ApplicationController
       session[:cart_id] = @cart.id
     
       flash[:notice] = "Order has been placed. Your cart has been emptied so you can place another order"
-      redirect_to @cart 
+      redirect_to carts_path 
     end
   end
 
