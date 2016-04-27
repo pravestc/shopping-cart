@@ -16,7 +16,7 @@ AURA MANA REGEN: 0.65
 AURA BONUS ARMOR: 2 ")
 end
 
-unless Item.exists?(name: "Ring of Basilius")
+unless Item.exists?(name: "Flying Courier")
   Item.create!(name: "Flying Courier", legend: "", effect: "Upgrades your team's Animal Courier to a Flying Courier, granting it swift, unobstructed movement to carry items to and from your team's base.
 
             Requires a deployed Animal Courier. ", stats: "")

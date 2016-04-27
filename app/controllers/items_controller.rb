@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @cart = Cart.find_by(user_id: session[:current_user_id])
   end
 
   def new
@@ -34,7 +35,8 @@ class ItemsController < ApplicationController
     redirect_to items_path
   end
 
-  def add_to_cart
+  def add_to_cart 
+    @cart = Cart.find_by(user_id: session[:current_user_id])
     @item = Item.find(params[:id])
     @cart.items << @item
     flash[:notice] = @item.name + " has been added to cart."
@@ -42,7 +44,8 @@ class ItemsController < ApplicationController
     redirect_to @item
   end
 
-  def remove_from_cart
+  def remove_from_cart 
+    @cart = Cart.find_by(user_id: session[:current_user_id])
     @item = Item.find(params[:id])
     @cart.items.delete(@item)
     flash[:notice] = @item.name + " has been removed from cart."
@@ -65,10 +68,12 @@ class ItemsController < ApplicationController
   end
   
   def set_cart 
-    if Cart.exists?(user_id: session[:current_user_id])
-      @cart = Cart.find_by(user_id: session[:current_user_id])
+    if Cart.exists?(id: session[:cart_id])
+      @cart = Cart.find_by(id: session[:cart_id])
     else
-      @cart = Cart.create(user_id: session[:current_user_id])
+      @cart = Cart.new
+      @cart.save
+      session[:cart_id] = @cart.id 
     end
   end
 end

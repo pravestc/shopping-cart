@@ -23,7 +23,11 @@ Rails.application.routes.draw do
       get :remove_from_cart
     end
   end
-  resources :carts, only: [:index, :show]
+  resources :carts, only: [:index, :show] do
+    member do
+      get :place_order
+    end
+  end
   # Example resource route with options:
   #   resources :products do
   #     member do

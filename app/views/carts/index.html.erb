@@ -1,0 +1,9 @@
+<h1>These are all your orders that have been placed</h1>
+
+<% @carts.each do |cart| %>
+  <p><%= cart.id %> - <%= cart.order %>
+      <% cart.items.each do |item| %>
+        <li><%= item.name %></li>
+      <% end %>
+  </p>
+<% end %>
