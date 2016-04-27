@@ -1,11 +1,11 @@
-<h1>Shopkeeper's page</h1>
-<p>View orders placed</p>
-
-
+<% @item = "Shopkeeper's page - Secret Shop" %>
+<h2>History of orders placed at the Shop</h2>
+<br>
+<br>
 
 <% @carts.each do |cart| %>
-  <h3>Ordered in: <%= cart.updated_at %> by <%= cart.user.email %></h3>
-  <h3>Total Price: <%= number_to_currency(cart.totalprice_dollars) %></h3>
+  <h4>Ordered on <%= cart.updated_at.localtime.strftime("%m/%d/%Y at %I:%M %p") %> by <%= cart.user.email %></h4>
+  <h4>Total Price: <%= number_to_currency(cart.totalprice_dollars) %></h4>
   <table class="table">
     <tr>
       <th>Name</th>

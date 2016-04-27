@@ -1,7 +1,7 @@
+<% @title = "Current cart - Secret Shop" %>
 <h1>This is your cart</h1>
-<h2>Total price: <%= number_to_currency(@cart.totalprice_dollars) %>
-
-<h2>List of items inside Cart</h2>
+<h4>Total price: <%= number_to_currency(@cart.totalprice_dollars) %></h4>
+<h4>List of items inside Cart</h4>
 <br>
 <table class="table">
   <tr>
@@ -16,6 +16,7 @@
     <th><%= @cart.manifests(true).where(item_id: item.id).first.quantity %></th>
   </tr>
 <% end %>
+</table>
 
 <%= link_to "Place Order", place_order_cart_path, class: "btn btn-primary" %>
 
