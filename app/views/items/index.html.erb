@@ -1,15 +1,22 @@
 <h1>Welcome to the Secret Shop!</h1>
 
+<% users_only do %>
+  <li>
+    <%= link_to "Go to cart", cart_path(@cart) %>
+  </li>
+<% end %>
 
-<li>
-  <%= link_to "Go to cart", cart_path(@cart) %>
-</li>
-<li>
-  <%= link_to "Go to placed orders", carts_path %>
-</li>
-<li>
-  <%= link_to "New Item", new_item_path %>
-</li>
+<% signed_users_only do %>
+  <li>
+    <%= link_to "Go to placed orders", carts_path %>
+  </li>
+<% end %>
+
+<% shopkeepers_only do %>
+  <li>
+    <%= link_to "New Item", new_shopkeeper_item_path %>
+  </li>
+<% end %>
 <br>
 <br>
 <table>

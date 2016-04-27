@@ -22,6 +22,9 @@
     </li>
   <% end %>
   <% if user_signed_in? %>
+    <% shopkeepers_only do %>
+      <li><%= link_to "See orders", shopkeeper_root_path %></li>
+    <% end %>
     <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %>
     </li>
     <p>

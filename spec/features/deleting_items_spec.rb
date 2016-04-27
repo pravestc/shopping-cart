@@ -4,6 +4,7 @@ RSpec.feature "Shopkeeper can delete items" do
   let!(:item) { FactoryGirl.create(:item, name: "Ring of Protection") } 
  
   before do
+    login_as(FactoryGirl.create(:user, :shopkeeper))
     visit "/"
     click_link "Ring of Protection"
   end

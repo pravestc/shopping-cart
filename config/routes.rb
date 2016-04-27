@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   namespace :shopkeeper do
     root 'application#index'
+
+    resources :items, only: [:new, :create, :destroy]
   end
 
   devise_for :users
@@ -17,7 +19,7 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  resources :items, only: [:index, :new, :create, :show, :destroy] do
+  resources :items, only: [:index, :show] do
     member do 
       get :add_to_cart
       get :remove_from_cart

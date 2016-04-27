@@ -1,0 +1,2 @@
+module Shopkeeper::ItemsHelper
+end

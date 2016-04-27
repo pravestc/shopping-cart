@@ -1,6 +1,8 @@
 <h1>Item <%= @item.name %></h1>
-  <%= link_to "Delete Item", [@item], method: :delete,
+<% shopkeepers_only do %>
+  <%= link_to "Delete Item", shopkeeper_item_path(@item), method: :delete,
     data: { confirm: "Are you sure you want to delete this item?" } %>
+<% end %>
 <p>
   Price: <%= number_to_currency(@item.price_dollars) %><br><br>
   Legend: <%= @item.legend %><br><br>
@@ -8,6 +10,7 @@
   Stats: <%= @item.stats %><br><br>
 </p>
 <ul class="actions">
+<% users_only do %>
   <li>
     <%= link_to "Add item to cart", add_to_cart_item_path, class: "btn btn-primary" %>
   </li>
@@ -17,6 +20,7 @@
   <li>
     <%= link_to "Go to cart", cart_path(@cart) %>
   </li>
+<% end %>
   <li>
     <%= link_to "Go back to item list", items_path %>
   </li>
