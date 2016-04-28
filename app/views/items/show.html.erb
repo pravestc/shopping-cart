@@ -1,16 +1,25 @@
 <% @title = @item.name + " - Item - Secret Shop" %>
-<h1><%= @item.name %></h1>
-<% shopkeepers_only do %>
-  <%= link_to "Delete Item", shopkeeper_item_path(@item), method: :delete,
-    data: { confirm: "Are you sure you want to delete this item?" } %>
-<% end %>
-<p>
-  Price: <%= number_to_currency(@item.price_dollars) %><br><br>
-  Legend: <%= @item.legend %><br><br>
-  Effect: <%= @item.effect %><br><br>
-  Stats: <%= @item.stats %><br><br>
-</p>
+<div class="page-header">
+  <h1><%= @item.name %></h1>
 <ul class="actions">
+<% users_only do %>
+ <li>
+    <%= link_to "Go to cart", cart_path(@cart), class: "btn btn-success" %>
+  </li>
+<% end %>
+  <li>
+    <%= link_to "Go back to item list", items_path, class: "btn btn-info" %>
+  </li>
+</ul>
+
+</div>
+
+<div class="bd-example">
+ <ul class="actions2">
+    <li><% shopkeepers_only do %>
+    <%= link_to "Delete Item", shopkeeper_item_path(@item), method: :delete,
+    data: { confirm: "Are you sure you want to delete this item?" } %>
+<% end %></li>
 <% users_only do %>
   <li>
     <%= link_to "Add item to cart", add_to_cart_item_path, class: "btn btn-primary" %>
@@ -18,12 +27,19 @@
   <li>
     <%= link_to "Remove item from cart", remove_from_cart_item_path, class: "btn btn-danger" %>
   </li>
-  <li>
-    <%= link_to "Go to cart", cart_path(@cart) %>
-  </li>
 <% end %>
-  <li>
-    <%= link_to "Go back to item list", items_path %>
-  </li>
-</ul>
+  </ul>
 
+<dl>
+
+  <dt>Price</dt>
+  <dd><%= number_to_currency(@item.price_dollars) %></dd>
+  <dt>Legend</dt>
+  <dd><%= @item.legend %></dd>
+  <dt>Effect</dt>
+  <dd><%= @item.effect %></dd>
+  <dt>Stats</dt>
+  <dd><%= @item.stats %></dd>
+</dl>
+
+</div>
