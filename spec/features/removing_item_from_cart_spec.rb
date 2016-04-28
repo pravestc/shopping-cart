@@ -12,9 +12,8 @@ RSpec.feature "Users can remove items from cart" do
     click_link "Remove item from cart"
 
     expect(page).to have_content "Radiance has been removed from cart"
-    expect(page.current_url).to eq item_url(item)
     click_link "Go to cart"
     expect(page).to_not have_content item.name
-    expect(page).to have_content "This is your cart"
+    expect(page).to have_content "Current Cart"
   end
 end

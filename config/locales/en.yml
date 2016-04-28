@@ -21,3 +21,58 @@
 
 en:
   hello: "Hello world"
+  welcome_index_header: "Welcome to the Secret Shop!"
+  secret_shop: "Secret Shop"
+  home: "Home"
+  see_orders: "See orders"
+  sign_up: "Sign up"
+  sign_in: "Sign in"
+  signed_in_as: "Signed in as"
+  sign_out: "Sign out"
+  language: "Language"
+  go_to_cart: "Go to cart"
+  go_to_placed_orders: "Go to placed orders"
+  new_item: "New Item"
+  name: "Name"
+  price: "Price"
+  item: "Item"
+  go_back_to_item_list: "Go back to item list"
+  delete_item: "Delete Item"
+  delete_confirmation: "Are you sure you wan to delete this item?"
+  add_item_to_cart: "Add item to cart"
+  remove_item_from_cart: "Remove item from cart"
+  legend: "Legend"
+  effect: "Effect"
+  stats: "Stats"
+  history_of_orders: "History of orders"
+  ordered_on: "Ordered on"
+  total_price: "Total Price"
+  quantity: "Quantity"
+  current_cart: "Current Cart"
+  list_of_items_inside_cart: "List of items inside cart"
+  shopkeepers_page: "Shopkeeper's page"
+  at_the_shop: "at the shop"
+  prohibited_item_from_save: "prohibited this item from being saved"
+  errors_mult: "errors"
+  helpers:
+    label:
+      item:
+        name: "Name"
+        legend: "Legend"
+        effect: "Effect"
+        stats: "Stats"
+        price: "Price" 
+  activerecord:
+    errors:
+      template:
+        header:
+          one: "1 error prohibited this %{model} from being saved"
+          other: "%{count} errors prohibited this %{model} from being saved"
+        body: "There were problems with the following fields:"
+      models:
+        item:
+          attributes:
+            name:
+              blank: "Name can't be blank"
+            price:
+              blank: "Price can't be blank"        

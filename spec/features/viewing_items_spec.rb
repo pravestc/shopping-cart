@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "Users can view items" do
 
-  let!(:item) { FactoryGirl.create(:item, name: "Magic Stick") }
+  let!(:item) { FactoryGirl.create(:item, name: "Magic Stick", legend: "It's a really nice magic stick") }
 
   before do
 
@@ -16,6 +16,6 @@ RSpec.feature "Users can view items" do
   scenario "with the project details" do
     click_link "Magic Stick"
 
-    expect(page.current_url).to eq item_url(item)
+    expect(page).to have_content "It's a really nice magic stick" 
   end
 end

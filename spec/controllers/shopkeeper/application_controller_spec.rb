@@ -12,7 +12,7 @@ RSpec.describe Shopkeeper::ApplicationController, type: :controller do
     it "are not able to access the index action" do
       get :index
 
-      expect(response).to redirect_to "/"
+      expect(response).to redirect_to root_path 
       expect(flash[:alert]).to eq "You must be a shopkeeper to do that."
     end
   end

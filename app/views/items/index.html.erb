@@ -1,24 +1,24 @@
-<% @title = "Secret Shop" %>
+<% @title = t(:secret_shop) %>
 <div class = "page-header">
-  <h1>Welcome to the Secret Shop!</h1>
+  <h1><%=t :welcome_index_header %></h1>
 
 
 <ul class="actions">
 <% users_only do %>
   <li>
-    <%= link_to "Go to cart", cart_path(@cart), class: "btn btn-success" %>
+    <%= link_to t(:go_to_cart), cart_path(@cart), class: "btn btn-success" %>
   </li>
 <% end %>
 
 <% signed_users_only do %>
   <li>
-    <%= link_to "Go to placed orders", carts_path, class: "btn btn-info" %>
+    <%= link_to t(:go_to_placed_orders), carts_path, class: "btn btn-info" %>
   </li>
 <% end %>
 
 <% shopkeepers_only do %>
   <li>
-    <%= link_to fa_icon("plus") + " New Item", new_shopkeeper_item_path, class: "btn btn-success" %>
+    <%= link_to fa_icon("plus") + " " + t(:new_item), new_shopkeeper_item_path, class: "btn btn-success" %>
   </li>
 <% end %>
 </ul>
@@ -27,8 +27,8 @@
 <br>
 <table class="table">
   <tr>
-    <th>Name</th>
-    <th>Price</th>
+    <th><%= t(:name) %></th>
+    <th><%= t(:price) %></th>
   </tr>
   <% @items.each do |f| %>
     <tr>

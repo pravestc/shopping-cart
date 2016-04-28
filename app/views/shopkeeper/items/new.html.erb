@@ -1,11 +1,14 @@
-<h1>New Item</h1>
+<h1><%= t(:new_item) %></h1>
 
 <%= form_for([:shopkeeper, @item]) do |f| %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@item.errors.count, "error") %>
-        prohibited this item from being saved:</h2>
-
+      <h2><% if @item.errors.count > 1 %>
+        <%= @item.errors.count %> <%= t(:errors_mult) %>
+          <% else %> 
+            <%= "1 error" %>
+          <% end %>
+      <%= t(:prohibited_item_from_save) + ":" %></h2>
       <ul>
         <% @item.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>

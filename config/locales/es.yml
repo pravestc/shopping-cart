@@ -1,0 +1,78 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+es:
+  hello: "Hola Mundo"
+  welcome_index_header: "Bienvenido a la Tienda Secreta!"
+  secret_shop: "Tienda Secreta"
+  home: "Inicio"
+  see_orders: "Ver pedidos"
+  sign_up: "Crear una cuenta"
+  sign_in: "Iniciar sesión"
+  signed_in_as: "Conectado como "
+  sign_out: "Cerrar sesión"
+  language: "Idioma"
+  go_to_cart: "Ir al carro de compras"
+  go_to_placed_orders: "Ir a pedidos"
+  new_item: "Nuevo Objeto"
+  name: "Nombre"
+  price: "Precio"
+  item: "Objeto"
+  go_back_to_item_list: "Regresar a la lista de objetos"
+  delete_item: "Eliminar Objeto"
+  delete_confirmation: "Está seguro que desea eliminar este objeto?"
+  add_item_to_cart: "Agregar objeto al carro de compras"
+  remove_item_from_cart: "Eliminar objeto del carro de compras"
+  legend: "Leyenda"
+  effect: "Efectos"
+  stats: "Estadísticas"
+  history_of_orders: "Historial de pedidos"
+  ordered_on: "Solicitado el"
+  total_price: "Precio total"
+  quantity: "Cantidad"
+  current_cart: "Carro de compras actual"
+  list_of_items_inside_cart: "Lista de objetos en el carro de compras"
+  shopkeepers_page: "Página del dueño de la tienda"
+  at_the_shop: "en la tienda"
+  prohibited_item_from_save: "evitaron que este objeto pudiese ser guardado"
+  errors_mult: "errores"
+  helpers:
+    label:
+      item:
+        name: "Nombre"
+        legend: "Leyenda"
+        effect: "Effectos"
+        stats: "Estadísticas"
+        price: "Precio" 
+  activerecord:
+    errors:
+      template:
+        header:
+          one: "1 error evitó que este %{model} pudiese ser guardado"
+          other: "%{count} errores evitaron que este %{model} pudiese ser guardado"
+        body: "Hay problemas con los siguientes campos:"
+      models:
+        item:
+          attributes:
+            name: 
+              blank: "Nombre debe estar presente"
+            price:
+              blank: "Precio debe estar presente"

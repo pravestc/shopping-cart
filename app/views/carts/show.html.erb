@@ -1,13 +1,13 @@
-<% @title = "Current cart - Secret Shop" %>
-<h1>This is your cart</h1>
-<h4>Total price: <%= number_to_currency(@cart.totalprice_dollars) %></h4>
-<h4>List of items inside Cart</h4>
+<% @title = t(:current_cart) + " - " + t(:secret_shop) %>
+<h1><%= t(:current_cart) %></h1>
+<h4><%= t(:total_price) + ": " + number_to_currency(@cart.totalprice_dollars) %></h4>
+<h4><%= t(:list_of_items_inside_cart) %></h4>
 <br>
 <table class="table">
   <tr>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Quantity</th>
+    <th><%= t(:name) %></th>
+    <th><%= t(:price) %></th>
+    <th><%= t(:quantity) %></th>
   </tr>
 <% @cart.items.each do |item| %>
   <tr>

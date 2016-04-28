@@ -10,7 +10,7 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <%= link_to "Secret Shop", root_path, class: "navbar-brand" %>
+      <%= link_to t(:secret_shop), root_path, class: "navbar-brand" %>
       <button type="button" class="navbar-toggle collapsed"
             data-toggle="collapse" data-target="#collapse">
         <span class="sr-only">Toggle navigation</span>
@@ -23,29 +23,29 @@
     <div class="collapse navbar-collapse" id="collapse">
       <ul class="nav navbar-nav">
         <li class="<%= "active" if current_page?("/") %>">
-          <%= link_to "Home", root_path %>
+          <%= link_to t(:home), root_path %>
         </li>
         <% shopkeepers_only do %>
           <li>
-            <%= link_to "See orders", shopkeeper_root_path %>
+            <%= link_to t(:see_orders), shopkeeper_root_path %>
           </li>
         <% end %>
         <% unless user_signed_in? %>
           <li class="<%= "active" if current_page?("/users/sign_up") %>">
-            <%= link_to "Sign up", new_user_registration_path %>
+            <%= link_to t(:sign_up), new_user_registration_path %>
           </li>
           <li class="<%= "active" if current_page?("/users/sign_in") %>">
-            <%= link_to "Sign in", new_user_session_path %>
+            <%= link_to t(:sign_in), new_user_session_path %>
           </li>
         <% end %>
       </ul>
       <% if user_signed_in? %>
         <div class="navbar-right">
           <p class="navbar-text">
-            Signed in as <%= current_user.email %>
+            <%= t(:signed_in_as) + " " +  current_user.email %>
           </p>
           <ul class="nav navbar-nav">
-            <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+            <li><%= link_to t(:sign_out), destroy_user_session_path, method: :delete %>
             </li>
           </ul>
         </div>
@@ -61,6 +61,16 @@
 </div>
 <% end %>
 <%= yield %>
-  </div>
+<div class="dropup">
+            <button class="btn btn-default dropdown-toggle pull-right" type="button" id="dropdownLanguageMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <%= t(:language) %>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownLanguageMenu">
+              <li><a>English</a></li>
+              <li><a>Español</a></li>
+              <ul>
+          </div>
+</div>
 </body>
 </html>

@@ -11,7 +11,6 @@ RSpec.feature "Users can add items to cart" do
 
   scenario "successfully without being logged in" do
     expect(page).to have_content "Radiance has been added to cart."
-    expect(page.current_url).to eq item_url(item)
     click_link "Home"
     click_link "Courier"
     click_link "Add item to cart"
@@ -22,6 +21,6 @@ RSpec.feature "Users can add items to cart" do
 
     expect(page).to have_content "Radiance"
     expect(page).to have_content "Courier"
-    expect(page).to have_content "This is your cart"
+    expect(page).to have_content "Current Cart"
   end
 end

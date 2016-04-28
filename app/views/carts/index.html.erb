@@ -1,15 +1,15 @@
-<% @title = "History of orders - Secret Shop" %>
-<h1>These are all your orders that have been placed</h1>
+<% @title = t(:history_of_orders) + " - " + t(:secret_shop) %>
+<h1><%= t(:history_of_orders) %></h1>
 <br>
 <br>
 <% @carts.each do |cart| %>
-  <h4>Ordered on <%= cart.updated_at.localtime.strftime("%m/%d/%Y at %I:%M %p") %></h4>
-  <h4>Total Price: <%= number_to_currency(cart.totalprice_dollars) %></h4>
+  <h4><%= t(:ordered_on) + " " + cart.updated_at.localtime.strftime("%m/%d/%Y at %I:%M %p") %></h4>
+  <h4><%= t(:total_price) + ": " + number_to_currency(cart.totalprice_dollars) %></h4>
   <table class="table">
     <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Quantity</th>
+      <th><%= t(:name) %></th>
+      <th><%= t(:price) %></th>
+      <th><%= t(:quantity) %></th>
     </tr>
     <% cart.items.each do |item| %>
       <tr>

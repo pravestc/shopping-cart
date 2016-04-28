@@ -30,6 +30,5 @@ RSpec.feature "Users can place orders" do
     click_link "Place Order"
 
     expect(page).to have_content "Order has not been placed. Cart is empty. Please select one or more items before placing your order"
-    expect(page.current_url).to eq items_url
   end
 end
