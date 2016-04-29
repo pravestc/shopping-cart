@@ -54,6 +54,7 @@ es:
   at_the_shop: "en la tienda"
   prohibited_item_from_save: "evitaron que este objeto pudiese ser guardado"
   errors_mult: "errores"
+  404_error: "Recurso no encontrado"
   helpers:
     label:
       item:

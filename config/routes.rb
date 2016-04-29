@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  scope "(:locale)", locale: /en|es/ do
+  
+  get 'languages/english'
+
+  get 'languages/spanish'
+
   namespace :shopkeeper do
     root 'application#index'
 
@@ -10,6 +17,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+  get "/:locale" => "items#index"
   root 'items#index'
 
   # Example of regular route:
@@ -19,15 +27,17 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  resources :items, only: [:index, :show] do
-    member do 
-      get :add_to_cart
-      get :remove_from_cart
+    resources :items, only: [:index, :show] do
+      member do 
+        get :add_to_cart
+        get :remove_from_cart
+      end
     end
-  end
-  resources :carts, only: [:index, :show] do
-    member do
-      get :place_order
+
+    resources :carts, only: [:index, :show] do
+      member do
+        get :place_order
+      end
     end
   end
   # Example resource route with options:

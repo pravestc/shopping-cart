@@ -4,7 +4,8 @@ RSpec.feature "Users can remove items from cart" do
   let!(:item)  { FactoryGirl.create(:item, name: "Radiance") }
 
   before do
-    visit item_path(item)
+    visit "/"
+    click_link "Radiance"
     click_link "Add item to cart"
   end
 

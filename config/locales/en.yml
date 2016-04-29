@@ -54,6 +54,7 @@ en:
   at_the_shop: "at the shop"
   prohibited_item_from_save: "prohibited this item from being saved"
   errors_mult: "errors"
+  404_error: "Resource not found"
   helpers:
     label:
       item:
