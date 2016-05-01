@@ -27,7 +27,8 @@ class Shopkeeper::ItemsController < Shopkeeper::ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :legend, :effect, :stats, :price)
+    permitted = Item.globalize_attribute_names + [:price]
+    params.require(:item).permit(*permitted)
   end
 
 end

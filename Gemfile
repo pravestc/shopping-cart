@@ -61,3 +61,7 @@ gem "devise", "~> 3.4.1"
 gem "bootstrap-sass", "~> 3.3"
 
 gem "font-awesome-rails", "~> 4.3"
+
+gem "globalize", "~> 5.0.0"
+
+gem "globalize-accessors"

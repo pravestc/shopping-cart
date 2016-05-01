@@ -17,25 +17,38 @@
     </div>
   <% end %>
   <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %><br>
+    <%= f.label t(:name, :locale => :en) %><br>
+    <%= f.text_field :name_en %><br>
+  </p>
+  <p>
+    <%= f.label t(:name, :locale => :es) %><br>
+    <%= f.text_field :name_es %><br>
   </p>
 
   <p>
-    <%= f.label :legend %><br>
-    <%= f.text_area :legend %><br>
+    <%= f.label t(:legend, :locale => :en) %><br>
+    <%= f.text_area :legend_en %><br>
+  </p>
+  <p>
+    <%= f.label t(:legend, :locale => :es) %><br>
+    <%= f.text_area :legend_es %><br>
   </p>
 
-
   <p>
-    <%= f.label :effect %><br>
-    <%= f.text_area :effect %><br>
+    <%= f.label t(:effect, :locale => :en) %><br>
+    <%= f.text_area :effect_en %><br>
   </p>
-
-
   <p>
-    <%= f.label :stats %><br>
-    <%= f.text_area :stats %><br>
+    <%= f.label t(:effect, :locale => :es) %><br>
+    <%= f.text_area :effect_es %><br>
+  </p>
+  <p>
+    <%= f.label t(:stats, :locale => :en) %><br>
+    <%= f.text_area :stats_en %><br>
+  </p>
+  <p>
+    <%= f.label t(:stats, :locale => :es) %><br>
+    <%= f.text_area :stats_es %><br>
   </p>
 
   <p>
