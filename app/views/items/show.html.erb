@@ -30,8 +30,9 @@
 <% end %>
   </ul>
 
+  <%= image_tag @item.image_url.to_s %>
 <dl>
-
+  
   <dt><%= t(:price) %></dt>
   <dd><%= number_to_currency(@item.price_dollars) %></dd>
   <dt><%= t(:legend) %></dt>

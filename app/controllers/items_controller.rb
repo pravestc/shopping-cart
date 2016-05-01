@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show]
+  before_action :set_item, only: [:show, :edit, :update]
   before_action :set_cart
 
   def index
@@ -74,4 +74,9 @@ class ItemsController < ApplicationController
       session[:cart_id] = @cart.id 
     end
   end
+end
+
+def item_params
+  permitted = Item.globalize_attribute_names + [:price] + [:image]
+  params.require(:item).permit(*permitted)
 end

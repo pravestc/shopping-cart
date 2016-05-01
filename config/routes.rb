@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   namespace :shopkeeper do
     root 'application#index'
 
-    resources :items, only: [:new, :create, :destroy]
+    resources :items, only: [:new, :create, :edit, :update, :destroy]
   end
 
   devise_for :users

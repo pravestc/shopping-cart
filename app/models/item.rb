@@ -3,9 +3,12 @@ class Item < ActiveRecord::Base
   has_many :carts, :through => :manifests
   validates :name, presence: true
   validates :price, presence: true, numericality: { only_integer: true }
+   
 
   translates :name, :legend, :effect, :stats
   globalize_accessors :locales => [:en, :es], :attributes => [:name, :legend, :effect, :stats]
+
+  mount_uploader :image, ImageUploader
 
   def price_dollars
     self.price / 100

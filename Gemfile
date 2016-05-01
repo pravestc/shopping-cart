@@ -65,3 +65,5 @@ gem "font-awesome-rails", "~> 4.3"
 gem "globalize", "~> 5.0.0"
 
 gem "globalize-accessors"
+
+gem "carrierwave"
