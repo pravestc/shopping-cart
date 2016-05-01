@@ -16,6 +16,7 @@ RSpec.feature "Users can only see appropiate link" do
     scenario "cannot see the Delete Item link" do
       click_link "Radiance"
       expect(page).not_to have_link "Delete Item"
+      expect(page).not_to have_link "Edit Item"
       expect(page).to have_link "Add item to cart"
       expect(page).to have_link "Remove item from cart"
       expect(page).to have_link "Go to cart"
@@ -40,6 +41,7 @@ RSpec.feature "Users can only see appropiate link" do
     scenario "cannot see the Delete Item link" do
       click_link "Radiance"
       expect(page).not_to have_link "Delete Item"
+      expect(page).not_to have_link "Edit Item"
       expect(page).to have_link "Add item to cart"
       expect(page).to have_link "Remove item from cart"
       expect(page).to have_link "Go to cart"
@@ -62,6 +64,7 @@ RSpec.feature "Users can only see appropiate link" do
     scenario "Cannot see the Add item to cart, Remove item from cart and Go to cart links" do
       click_link "Radiance"
       expect(page).to have_link "Delete Item"
+      expect(page).to have_link "Edit Item"
       expect(page).not_to have_link "Add item to cart"
       expect(page).not_to have_link "Remove item from cart"
       expect(page).not_to have_link "Go to cart"

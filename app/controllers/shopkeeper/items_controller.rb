@@ -41,7 +41,7 @@ class Shopkeeper::ItemsController < Shopkeeper::ApplicationController
   private
 
   def item_params
-    permitted = Item.globalize_attribute_names + [:price] + [:image]
+    permitted = Item.globalize_attribute_names + [:price] + [:image] + [:remove_image]
     params.require(:item).permit(*permitted)
   end
 

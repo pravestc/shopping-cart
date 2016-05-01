@@ -50,12 +50,19 @@
   </p>
 
   <p>
-    <%= f.label :price %><br>
+    <%= f.label t(:price) %><br>
     <%= f.text_field :price %><br>
   </p>
 
   <p>
-    <%= f.file_field :image %>
+      <%= image_tag(@item.image_url) if @item.image? %>
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+      <%= f.hidden_field :image_cache %>
+  </p>
+  <p>
+    <%= f.check_box :remove_image %>
+    <label>Remove image</label>
   </p>
   <%= f.submit %>
 <% end %>
