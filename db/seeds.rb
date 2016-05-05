@@ -31,7 +31,7 @@ Múltiples instancias de Aura de Basilius no son acumulables.'
   it.stats_es = '+ 7 Daño
 REGENERACIÓN DE MANÁ EN AURA: 0.65
 ARMADURA ADICIONAL EN AURA: 2'
-  File.open('/home/pablo/Pictures/dota2_items/ring_of_basilius_lg.png') do |f|
+  File.open('public/uploads/dota2_items/ring_of_basilius_lg.png') do |f|
     it.image = f
   end
   it.save
@@ -67,7 +67,7 @@ unless Item.exists?(name: "Moon Shard")
   it.stats_es = '+ 120 Velocidad de ataque
   VISIÓN NOCTURNA ADICIONAL: 250
   VELOCIDAD DE ATAQUE TRAS CONSUMIR: 60'
-  File.open('/home/pablo/Pictures/dota2_items/moon_shard_lg.png') do |f|
+  File.open('public/uploads/dota2_items/moon_shard_lg.png') do |f|
     it.image = f
   end
   it.save
@@ -94,7 +94,7 @@ unless Item.exists?(name: "Glimmer Cape")
   TIEMPO DE DESVANECIMIENTO DEL DESTELLO: 0.6
   RESISTENCIA MÁGICA POR DESTELLO: 45%
   DURACIÓN DEL DESTELLO: 5'
-  File.open('/home/pablo/Pictures/dota2_items/glimmer_cape_lg.png') do |f|
+  File.open('public/uploads/dota2_items/glimmer_cape_lg.png') do |f|
     it.image = f
   end
   it.save
@@ -137,7 +137,7 @@ unless Item.exists?(name: "Sange and Yasha")
   MOVEMENT SLOW RANGED: 13%
   ATTACK SLOW RANGED: 13
   DURACIÓN DE MUTILACIÓN: 5"
-  File.open('/home/pablo/Pictures/dota2_items/sange_and_yasha_lg.png') do |f|
+  File.open('public/uploads/dota2_items/sange_and_yasha_lg.png') do |f|
     it.image = f
   end
   it.save
@@ -156,7 +156,7 @@ unless Item.exists?(name: "Animal Courier")
 
   Despliega una criatura que transporta objetos a y desde la base de tu equipo.'
   it.stats_es = ""
-  File.open('/home/pablo/Pictures/dota2_items/courier_lg.png') do |f|
+  File.open('public/uploads/dota2_items/courier_lg.png') do |f|
     it.image = f
   end
   it.save
